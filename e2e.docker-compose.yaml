@@ -1,0 +1,20 @@
+services:
+  wobbly-e2e-database:
+    container_name: 'wobbly-e2e-database'
+    image: postgres:alpine
+    restart: always
+    environment:
+      - POSTGRES_HOST=wobbly-e2e-database
+      - POSTGRES_PORT=6969
+      - POSTGRES_USER=wobbly-user
+      - POSTGRES_PASSWORD=wobbly-password
+      - POSTGRES_DB=wobbly-e2e-database
+      - POSTGRES_MODE=disable
+    ports:
+      - '6969:6969'
+    command: -p 6969
+    volumes:
+      - wobbly-e2e-data:/var/lib/postgresql/data
+
+volumes:
+  wobbly-e2e-data:
