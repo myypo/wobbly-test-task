@@ -30,6 +30,7 @@
           just
 
           docker-compose
+          pm2
         ];
 
         shellHook = with pkgs; ''
