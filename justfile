@@ -50,6 +50,15 @@ default:
     pnpm run start:debug
 
 @prod:
+    #!/usr/bin/env bash
+
+    set -a
+    source .env
+    set +a
+
+    until docker exec wobbly-prod-database pg_isready ; do sleep 0.25 ; done
+
+    docker-compose --file prod.docker-compose.yaml up --detach
     pnpm install
     pnpm run build
     pnpm run start:prod
