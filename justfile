@@ -59,6 +59,7 @@ default:
     docker-compose --file prod.docker-compose.yaml up --detach
     until docker exec wobbly-prod-database pg_isready ; do sleep 0.25 ; done
     prisma generate
+    prisma migrate deploy
 
     pnpm install
     pnpm run build
