@@ -29,7 +29,7 @@
 
           just
 
-          node2nix
+          docker-compose
         ];
 
         shellHook = with pkgs; ''
